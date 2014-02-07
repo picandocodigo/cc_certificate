@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Certificaci&oacute;n en Comunicaci&oacute;n Efectiva</title>
+  <link rel="stylesheet" href="style.css" type="text/css"
+  media="screen" />
+  <link href='http://fonts.googleapis.com/css?family=Great+Vibes'
+  rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id="container">
+  <h1>Certificaci&oacute;n en Comunicaci&oacute;n Efectiva</h1>
+  <h2>Picando C&oacute;digo</h2>
+  <h3>Certifica que:</h3>
+
+  <input type="text" id="name" placeholder="Ingresa tu nombre"></input>
+  <p>Ha cumplido con la lectura necesaria para  la Certificaci&oacute;n en
+    Comunicaci&oacute;n Efectiva<br/>seg&uacute;n <a href="http://picandocodigo.net/2014/taller-de-comunicacion-efectiva"
+    title="Comuniaci&oacute;n efectiva">los est&aacute;ndares
+    aprobados por el blog </a> - <span id="date"></span> </p>
+
+  <p class="small">Por Picando C&oacute;digo:</p>
+  <p id="signature">Fernando Briano</p>
+  <button id="print">Obtener Imagen</button>
+</div>
+<script type="text/javascript" src="html2canvas.js"></script>
+<script type="text/javascript">
+  var date = new Date();
+  var months = new Array();
+  var month=new Array();
+  month[0]="Enero"; month[1]="Febrero"; month[2]="Marzo";
+  month[3]="Abril"; month[4]="Mayo"; month[5]="Junio"; month[6]="Julio";
+  month[7]="August"; month[8]="September"; month[9]="October";
+  month[10]="November"; month[11]="December";
+
+  document.getElementById("date").innerHTML = date.getDate() + " de " +
+  month[date.getMonth()] + " de " + date.getFullYear();
+  
+
+  document.getElementById("print").addEventListener("click", function(){
+    document.getElementById("print").style.display = "none";
+    html2canvas(document.body, {
+      onrendered: function(canvas) {
+        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        window.location.href = image;
+      }
+    });
+  });
+</script>
+</body>
